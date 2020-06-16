@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Chef>;
+
+<div class="jumbotron">
+  <h1>Chefs 'N Dishes</h1>
+  <h3>Check our roster of Chefs!</h3>
+  <table class="table-striped table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col"># of Dishes</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach (Chef c in Model)
+      {          
+        <tr>
+          <td>@c.FirstName @c.LastName</td>
+          <td>@((int) (DateTime.Today - c.DOB).TotalDays/365)</td>
+          <td>@c.Dishes.Count </td>
+        </tr>
+      }
+    </tbody>
+</table>
+</div>
